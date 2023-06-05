@@ -3,7 +3,9 @@ package com.example.listviewexample;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.LinkedList;
@@ -13,17 +15,32 @@ import model.Pet;
 public class MainActivity extends AppCompatActivity {
 
     ListView listView;
+    int selection;
+
+    private View.OnClickListener switchListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(selection == 1){
+                selection = 2;
+            }else{
+                selection = 1;
+            }
+            populateListView();
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         listView = findViewById(R.id.list);
-        int selection = 2;
-        populateListView(selection);
+        Button switchButton = findViewById(R.id.button);
+        switchButton.setOnClickListener(switchListener);
+        selection = 2;
+        populateListView();
     }
 
-    private void populateListView(int selection) {
+    private void populateListView() {
         switch (selection) {
             case 1:
                 useStringResource();
