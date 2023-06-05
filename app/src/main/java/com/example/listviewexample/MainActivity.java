@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 
@@ -28,6 +30,15 @@ public class MainActivity extends AppCompatActivity {
             populateListView();
         }
     };
+
+    private AdapterView.OnItemClickListener listListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Pet currentPet = (Pet) parent.getItemAtPosition(position);
+            String text = "Selected the " + position +"th element: " + currentPet.getName();
+            Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
+        }
+    } ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +55,11 @@ public class MainActivity extends AppCompatActivity {
         switch (selection) {
             case 1:
                 useStringResource();
+                listView.setOnItemClickListener(null);
                 break;
             case 2:
                 usingDataArray();
+                listView.setOnItemClickListener(listListener);
                 break;
 
         }
@@ -58,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void useStringResource() {
         String[] breeds = getResources().getStringArray(R.array.breeds);
-        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, breeds);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, breeds);
         listView.setAdapter(adapter);
     }
 
@@ -74,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         pets.add(new Pet("Mango", "Whimpet", 2));
         pets.add(new Pet("Boy", "Mutt", 6));
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, pets);
+        ArrayAdapter<Pet> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, pets);
 
         listView.setAdapter(adapter);
 
