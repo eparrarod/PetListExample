@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="breeds">
+        <item>Labrador</item>
+        <item>Java</item>
+        <item>Labradoodle</item>
+        <item>Husky</item>
+        <item>Siberian Husky</item>
+        <item>Golden Retriever</item>
+        <item>Alaskan Malamute</item>
+        <item>Frenchie</item>
+        <item>Poodle</item>
+        <item>Doberman</item>
+        <item>Pomsky</item>
+        <item>Pomeranian</item>
+        <item>Bulldog</item>
+        <item>Doberman</item>
+        <item>Pomsky</item>
+        <item>Bulldog</item>
+        <item>Poodle</item>
+        <item>Bulldog</item>
+        <item>Pomsky</item>
+        <item>Pomeranian</item>
+    </string-array>
+
+</resources>
