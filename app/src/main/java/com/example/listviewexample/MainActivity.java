@@ -32,14 +32,13 @@ public class MainActivity extends AppCompatActivity {
      * the content of a strings array resource
      */
     private void useStringResource() {
-
+        String[] breeds = getResources().getStringArray(R.array.breeds);
     }
 
     /**
      * This method populates the list view using a string resource containing the list of a data array
      */
     private void usingDataArray() {
-
 
     }
 }
